@@ -3,9 +3,14 @@ namespace Fibonacci;
 public static class FibonacciCalculator {
     public static long Calculate(int position) 
     {
-        if (position <= 2)
+        if (position == 0)
         {
-            return 1;
+            return 0;
+        }
+
+        if (position < 0)
+        {
+            return CalculateNegativeFibonacci(position);
         }
 
         var i = 1;
@@ -20,5 +25,18 @@ public static class FibonacciCalculator {
         }
 
         return j;
+    }
+
+    private static long CalculateNegativeFibonacci(int position)
+    {
+        if (position >= 0)
+        {
+            throw new ArgumentException("Position must be less than zero!");
+        }
+
+        var absoluteResult = Calculate(-position);
+        return position % 2 == 0
+            ? absoluteResult * -1
+            : absoluteResult;
     }
 }
