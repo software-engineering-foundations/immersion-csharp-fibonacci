@@ -1,8 +1,13 @@
 namespace Fibonacci;
 
 public static class FibonacciCalculator {
-    public static long Calculate(int position) 
+    public static long Calculate(int position, bool recursion = false) 
     {
+        if (recursion) 
+        {
+            return CalculateRecursive(1, 1, position - 2);
+        }
+
         if (position <= 2)
         {
             return 1;
@@ -20,5 +25,20 @@ public static class FibonacciCalculator {
         }
 
         return j;
+    }
+
+    private static long CalculateRecursive(int previous, int current, int stepsLeft) 
+    {
+        if (stepsLeft < 0) 
+        {
+            return 1;
+        }
+
+        if (stepsLeft == 0) 
+        {
+            return current;
+        }
+
+        return CalculateRecursive(current, previous + current, stepsLeft - 1);
     }
 }
