@@ -14,4 +14,10 @@ public class FibonacciTests
             Fibonacci.FibonacciCalculator.Calculate(i + 1).Should().Be(expectedOutputs[i]);
         }
     }
+
+    [Test]
+    public void TestNullFibonacci()
+    {
+        Fibonacci.FibonacciCalculator.Calculate(null).Should().Be(1);
+    }
 }
