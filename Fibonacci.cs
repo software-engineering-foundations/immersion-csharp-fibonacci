@@ -21,4 +21,10 @@ public static class FibonacciCalculator {
 
         return j;
     }
+
+    public static long[] CalculateArray(int start, int endInclusive)
+    {
+        var inputArray = Enumerable.Range(start, endInclusive - start + 1);
+        return inputArray.Select(x => Calculate(x)).ToArray();
+    }
 }
